@@ -84,7 +84,7 @@
 
 </script>
 <style scoped>
-  @import "../../css/message.css";
+  @import "../../assets/css/message.css";
   
  
 

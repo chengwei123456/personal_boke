@@ -15,13 +15,12 @@ export default {
 </script>
 
 <style>
-
+  @import "../static/alert_.css";
   @import "../static/layui/css/layui.css";
-  @import "./font-awesome/css/font-awesome.min.css";
-  @import "./css/animate.min.css";
-  
-  @import "../src/css/master.css";
-  @import "../src/css/gloable.css";
-  @import "../src/css/nprogress.css";
-  @import "../src/css/blog.css";
+  @import "assets/font-awesome/css/font-awesome.min";
+  @import "assets/css/animate.min.css";
+  @import "assets/css/master.css";
+  @import "assets/css/gloable.css";
+  @import "assets/css/nprogress.css";
+  @import "assets/css/blog.css";
 </style>

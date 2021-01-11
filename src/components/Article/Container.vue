@@ -76,9 +76,24 @@
         dele_Data({"id":id}).then(result =>{
           location.reload();
         })
+      },
+      goBack(){
+          console.log("点击了浏览器的返回按钮");
+          sessionStorage.clear();
+          window.history.back();
+          history.pushState(null, null, document.URL);
+        },
+    },
+    mounted() {
+      if (window.history && window.history.pushState) {
+        // 向历史记录中插入了当前页
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', this.goBack, false);
       }
     },
-
+    destroyed() {
+      window.removeEventListener('popstate', this.goBack, false);
+    },
     created() {
       
       if (this.id == 2) {

@@ -1,5 +1,8 @@
 <template>
   <div>
+      <remote-script src="static/layui/layui.js"></remote-script>
+      <remote-script src="static/js/wow.min.js"></remote-script>
+      <remote-script src="static/js/index.js"></remote-script>
       <Menu></Menu>
       <Navgation></Navgation>
       <Section1></Section1>
@@ -11,7 +14,9 @@
   </div>
 </template>
 
+
 <script>
+  import "../../common/importJs"  
   import Menu from "./Menu.vue"
   import Navgation from "./Navgation.vue"
   import Section1 from "./Section1.vue"
@@ -31,27 +36,13 @@
         Section4,
         Contact
     },
-    methods: {
-        // 引入全局js
-        importJs(jspath){
-            var script = document.createElement("script");
-            var head = document.getElementsByTagName("head")[0];
-            script.src = jspath;
-            head.appendChild(script)
-        }
-    },
-    mounted() {
-        this.importJs("static/layui/layui.js");
-        this.importJs("static/js/wow.min.js");
-        this.importJs("static/js/index.js");
-    },
-
+    
   }
 
 </script>
 
 
 <style>
-  @import "../../css/index_style";
+  @import "../../assets/css/index_style";
   
 </style>

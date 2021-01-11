@@ -2,23 +2,31 @@
   <div>
       <!-- 导航 -->
         <Nav></Nav>
-       
-        <!-- 博客正文 -->
+
+       <!-- 局部js加载 -->
+        <remote-script src="../../../static/layui/layui.js"></remote-script>
+        <remote-script src="../../../static/js/yss/gloable.js"></remote-script>
+        <remote-script src="../../../static/js/plugins/nprogress.js"></remote-script>
+        <remote-script src="../../../static/js/yss/article.js"></remote-script>
+          <!-- 博客正文 -->
         <div class="doc-container" id="doc-container" v-if="id">
           <div class="container-fixed">
-              <Container v-bind:id = "id"></Container>
+              <Container  v-bind:id = "id"></Container>
               <Categoryandsearch></Categoryandsearch>
           </div>
-      </div>
+        </div>
 
       <router-view  @child-event = "getId" @child-event2 = "getId2"></router-view>
 
-     
       <Footer></Footer>
      
   </div>
 </template>
+
+
+
 <script>
+  import '../../common/importJs'
   import Nav from "../Nav/Nav"
   import Container from "@/components/Article/Container"
   import Categoryandsearch from "@/components/Article/Categoryandsearch"
@@ -38,13 +46,9 @@
       Footer,
     },
     methods: {
-        // 引入全局js
-        importJs(Jspath){
-            var script = document.createElement("script");
-            var head = document.getElementsByTagName("head")[0];
-            script.src = Jspath;
-            head.appendChild(script)
-        },
+
+        
+
         getId(id){
           if (id){
             this.id = 0;
@@ -59,13 +63,7 @@
     },
     
   
-    mounted() {
-        this.importJs("static/layui/layui.js");
-        this.importJs("static/js/yss/gloable.js");
-        this.importJs("static/js/plugins/nprogress.js")
-        this.importJs("static/js/yss/article.js")
-        
-    },
+    
   }
 
 </script>

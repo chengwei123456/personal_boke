@@ -153,17 +153,12 @@
     destroyed() {
       // 显示article路由
       this.$emit("child-event2", this.destroy)
-
-
     },
-
-
-
   }
 
 </script>
 <style scoped>
-  @import url("../../css/blog.css");
+  @import url("../../assets/css/blog.css");
   #blog-comment li {
       text-indent: 0;
   }
