@@ -50,7 +50,10 @@
             tag: '',
         }
     },
-  
+    created() {
+      localStorage.setItem('all',2)
+      localStorage.setItem("scrollTop",0)
+    },
     methods: {
          // 引入全局js
          importJs(Jspath){
@@ -60,7 +63,6 @@
             head.appendChild(script)
         },
         Sendblog(){
-
             this.title = this.$refs.getValue.value;
             this.content = this.$refs.getTextValue.value;
             this.tag = this.$refs.getSelect.value;

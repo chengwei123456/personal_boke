@@ -99,7 +99,8 @@
 </template>
 <script>
   import {
-    allBlogs
+    allBlogs,
+    search_id
   } from "../../API_axios/user"
   import {
     Update_read
@@ -118,19 +119,26 @@
 
       }
     },
+    beforeMount() {
+      //解绑事件
+      window.removeEventListener('scroll', this.windowScroll)
+    },
+
     created() {
+      this.destroy = this.$route.path.split('/')[2]
       var _this = this
       this.id = this.$route.params.id;
       // 隐藏article路由
       this.$emit("child-event", this.id)
       if (this.sendUrl) {
-        allBlogs().then(result => {
+        search_id({"id":this.id}).then(result => {
+
           this.blog = result.data;
-          this.blog.forEach(function (item) {
-            if (item["id"] == _this.id) {
-              _this.blog = item
-            }
-          })
+          // this.blog.forEach(function (item) {
+          //   if (item["id"] == _this.id) {
+          //     _this.blog = item
+          //   }
+          // })
           this.loading = false;
         })
       }
@@ -140,7 +148,6 @@
       'blog': function (newVal, oldVal) {
         this.sendUrl = false
         if (this.blog && this.id) {
-
           Update_read({
             "id": this.id,
             "read": this.blog["read"]
@@ -148,7 +155,8 @@
             this.sendUrl = true
           })
         }
-      }
+      },
+      
     },
     destroyed() {
       // 显示article路由

@@ -6,6 +6,8 @@ const Content = () => import("../component/Content/Content.vue")
 const Home = () => import("../components/Home/Home.vue")
 const Message = () => import("../components/Message/Message.vue")
 const Read = () => import("../components/Message/Read.vue")
+const Diary = () => import("../components/Diary/Diary.vue")
+const Link = () => import("../components/Link/Link.vue")
 Vue.use(Router)
 
 export default new Router({
@@ -25,6 +27,7 @@ export default new Router({
      {
       path :'/index',
       redirect:'/'
+    
      },
      //首页
     {
@@ -33,7 +36,7 @@ export default new Router({
     },
     //博客页
     {
-      path: '/article/:id',
+      path: '/article/:classify',
       name: 'Content',
       component: Content,
       children:[
@@ -42,14 +45,25 @@ export default new Router({
           name: 'read',
           component:Read
         }
-      ]
+      ],
+      meta:{
+        keepalive:true,
+      }
     },
-    //留言页
+    //写博客页
     {
       path:'/message',
       component: Message,
+    },
+    //日记页面
+    {
+      path: '/diary',
+      component: Diary
+    },
+    // 友链页面
+    {
+      path: '/link',
+      component: Link,
     }
-   
-   
   ],
 })

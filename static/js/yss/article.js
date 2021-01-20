@@ -1,5 +1,6 @@
 ﻿layui.use(['jquery'], function () {
   var $ = layui.jquery;
+  var data_index = 0
   //var $ = layui.jquery,
   var slider = 0;
   blogtype();
@@ -47,25 +48,41 @@
     $('.article-category').removeClass('categoryIn').addClass('categoryOut');
   }
 
+  $('.slider').css({
+    'top': ((parseInt(window.num) - 1) * 40) + 'px'
+  });
+
   function blogtype() {
-    $('#category li').hover(function () {
-      $(this).addClass('current');
-      var num = $(this).attr('data-index');
-      $('.slider').css({
-        'top': ((parseInt(num) - 1) * 40) + 'px'
+    $('#category li').click(function () {
+        $(this).addClass('current');
+        var num = $(this).attr('data-index');
+        $('.slider').css({
+          'top': ((parseInt(num) - 1) * 40) + 'px'
+        });
+        $('#category li').not(this).removeClass('current')
+      }),
+
+      // $('#category li').hover(function () {
+      //   $(this).addClass('current');
+      //   var num = $(this).attr('data-index');
+      //   $('.slider').css({
+      //     'top': ((parseInt(num) - 1) * 40) + 'px'
+      //   });
+      // }, function () {
+      //   $(this).removeClass('current');
+      //   $('.slider').css({
+      //     'top': slider
+      //   });
+      // });
+      $(window).scroll(function (event) {
+        var winPos = $(window).scrollTop();
+        if (winPos > 750)
+          $('#categoryandsearch').addClass('fixed');
+        else
+          $('#categoryandsearch').removeClass('fixed');
       });
-    }, function () {
-      $(this).removeClass('current');
-      $('.slider').css({
-        'top': slider
-      });
-    });
-    $(window).scroll(function (event) {
-      var winPos = $(window).scrollTop();
-      if (winPos > 750)
-        $('#categoryandsearch').addClass('fixed');
-      else
-        $('#categoryandsearch').removeClass('fixed');
-    });
   };
 });
+
+// 恢复游览器滚动条
+window.scrollTo(0, localStorage.getItem('scrollTop'));

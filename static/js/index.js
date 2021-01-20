@@ -1,7 +1,7 @@
 ﻿layui.use(['jquery', 'util'], function () {
   var $ = layui.jquery,
     util = layui.util;
-  $(window).load(function () {
+  $(window).on("load",function () {
     $("#loading").fadeOut(500);
     new WOW().init();
   })

@@ -12,7 +12,7 @@
                                 <router-link to="/index" >首页</router-link>  
                             </li>
                             <li>
-                                <router-link :to="{name:'Content',params:{id:2}}" >博客</router-link>
+                                <router-link :to="{name:'Content',params:{classify:'all'}}" >博客</router-link>
                             </li>
                             <li>
                                 <router-link to="/message">写博客</router-link>

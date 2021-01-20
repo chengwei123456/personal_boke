@@ -1,9 +1,9 @@
 <template lang="">
         <div id="navgation" class="navgation navgation_close">
             <ul class="point">
-              <li><a href="#">首页</a></li>
-              <li><a href="article.html">博客</a></li>
-              <li><a href="message.html">留言</a></li>
+              <li> <router-link to="/index">首页</router-link> </li>
+              <li> <router-link :to="{name:'Content',params:{classify:'all'}}">博客</router-link> </li>
+              <li> <router-link to="/message">写博客</router-link> </li>
             </ul>
             <div class="logo"><a>Mr.cheng</a></div>
           </div>

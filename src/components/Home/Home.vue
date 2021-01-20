@@ -36,6 +36,10 @@
         Section4,
         Contact
     },
+    created() {
+      localStorage.setItem('all',2)
+      localStorage.setItem("scrollTop",0)
+    },
     
   }
 
